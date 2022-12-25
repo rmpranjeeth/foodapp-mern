@@ -20,7 +20,7 @@ function TopBar(props) {
             <Nav.Link onClick={() => navigate("/user-menu")}>Home</Nav.Link>
             <Nav.Link onClick={() => navigate("/user-cart")}>Cart <Badge bg="danger">{props.value.cart.length}</Badge></Nav.Link>
             <Nav.Link onClick={() => navigate("/order-success")}>My Orders</Nav.Link>
-            <Nav.Link onClick={()=>navigate('/login')} href="javascript(void)">Logout</Nav.Link>
+            <Nav.Link onClick={()=>navigate('/login')}>Logout</Nav.Link>
           </Nav>
           </Navbar.Collapse>
         </Container>
