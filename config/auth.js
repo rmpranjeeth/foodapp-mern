@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken")
 const bcrypt = require('bcryptjs')
-
+require("dotenv").config();
 
 let hashPassword = async(password)=>{
     let salt = await bcrypt.genSalt(process.env.saltRounds);
