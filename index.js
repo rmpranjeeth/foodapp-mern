@@ -21,13 +21,20 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 
-// Set up default mongoose connection
-mongoose.connect((process.env.dbUrl), { useNewUrlParser: true, useUnifiedTopology: true }),
-console.log("Connected to MongoDB, server listening on port "+ PORT);
+// // Set up default mongoose connection
+// mongoose.connect((process.env.dbUrl), { useNewUrlParser: true, useUnifiedTopology: true }),
+// console.log("Connected to MongoDB, server listening on port "+ PORT);
 
-// Get the default connection
-const db = mongoose.connection;
+// // Get the default connection
+// const db = mongoose.connection;
 
-// Bind connection to error event (to get notification of connection errors)
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
+// // Bind connection to error event (to get notification of connection errors)
+// db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
+mongoose.connect(process.env.dbUrl).then(()=> {
+    app.listen(PORT, ()=> {
+        console.log("Connected to MongoDB, server listening on port "+ PORT);
+    });
+}).catch((error)=> {
+    console.log("Failed to connect to MongoDB, error: "+ error.message);
+});
