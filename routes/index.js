@@ -4,7 +4,7 @@ var router = express.Router();
 const {mongodb,dbName,dbUrl} = require('../config/dbConfig')
 const {mongoose,usersModel,foodModel,orderModel} = require('../config/dbSchema')
 const {hashPassword,hashCompare,createToken,decodeToken,validateToken,adminGaurd} = require('../config/auth')
-
+require("dotenv").config();
 
 router.get('/all-food',validateToken,async(req, res)=>{
   try {
