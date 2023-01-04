@@ -4,7 +4,7 @@ require("dotenv").config();
 
 
 let hashPassword = async(password)=>{
-    console.log(saltRounds);
+    console.log(process.env.saltRounds);
     let salt = await bcrypt.genSalt(process.env.saltRounds);
     let hashedPassword = await bcrypt.hash(password,salt)
     return hashedPassword
