@@ -27,9 +27,7 @@ router.post('/signup', async(req, res)=> {
       {
         let hashedPassword = await hashPassword(req.body.password)
         req.body.password = hashedPassword
-        console.log(typeof req.body);
-        let body = JSON.parse(req.body);
-        let user = await usersModel.create(body)
+        let user = await usersModel.create(req.body)
         res.send({
           statusCode:200,
           message:"SignUp Successful!",
