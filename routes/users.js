@@ -4,6 +4,7 @@ const {mongodb,dbName,dbUrl} = require('../config/dbConfig')
 const {mongoose,usersModel,foodModel,orderModel} = require('../config/dbSchema')
 const {hashPassword,hashCompare,createToken,decodeToken,validateToken,adminGaurd} = require('../config/auth')
 require("dotenv").config();
+console.log("hi")
 
 router.get('/',validateToken,adminGaurd,async(req,res)=>{
   res.send({
@@ -26,7 +27,9 @@ router.post('/signup', async(req, res)=> {
       {
         let hashedPassword = await hashPassword(req.body.password)
         req.body.password = hashedPassword
-        let user = await usersModel.create(req.body)
+        console.log(typeof req.body);
+        let body = JSON.parse(req.body);
+        let user = await usersModel.create(body)
         res.send({
           statusCode:200,
           message:"SignUp Successful!",
